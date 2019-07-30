@@ -9,4 +9,11 @@ navbar:
       href: index.html
     - text: "About"
       href: about.html
-output: distill::distill_article
+##output: distill::distill_article
+output:
+  html_document:
+    theme: flatly
+    highlight: tango
+    toc: false
+    toc_float: false
+    code_download: true
