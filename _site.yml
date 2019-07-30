@@ -1,20 +1,12 @@
-name: "Plant Lovers Workshop 2019"
+name: "basic-workshop-site"
+title: "Pakistan R workshop"
+description: |
+  Pakistan R workshop
 output_dir: "docs"
 navbar:
-  title: "Plant Lovers Workshop 2019"
-  left:
+  right:
     - text: "Home"
       href: index.html
-    - text: "Code of Conduct"
-      href: code_of_conduct.html
-  right:
-    - icon: fa-github
-      href: https://github.com/rstudio4edu/rmd-bare-demo-workshop
-output:
-  html_document:
-    theme: flatly
-    highlight: tango
-    toc: false
-    toc_float: false
-    code_download: true
-    
+    - text: "About"
+      href: about.html
+output: distill::distill_article
