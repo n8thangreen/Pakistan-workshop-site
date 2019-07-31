@@ -38,10 +38,9 @@ Open RStudio and paste the following code into your console, then press Enter to
 ```{r, eval = FALSE}
 # Download packages from CRAN
 
-install.packages(c("devtools", "knitr", "magrittr", "sf", "sp", "rmarkdown", "usethis", "osmdata"))
+install.packages(c("devtools", "knitr", "magrittr", "sf", "sp", "rmarkdown", "usethis", "ggplot2", "dplyr"))
 
 ```
-
 
 In addition, you will need an up-to-date web browser.  
 
@@ -53,7 +52,7 @@ In addition, you will need an up-to-date web browser.
  
 From basic principles to advanced graphics. You will be able to 
 
-* Read-in an explore data sets
+* Read-in, explore and write data sets
 * Clean messy data and rearrange for analysis
 * Plot and map different types of data
 
@@ -76,8 +75,11 @@ Our agenda is below.
 
 #### DAY 2: Introduction
 
+ Pre-reading
+ * `r xfun::embed_file('Thieme-2018-Significance.pdf')`
+    
 * Introduction to R
-  + history
+  + history and motivation
   + R for data analysis
   + RStudio GUI
   + Console, scripts
