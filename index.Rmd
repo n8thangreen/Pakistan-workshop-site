@@ -73,11 +73,14 @@ Our agenda is below.
 
 <br>
 
-#### DAY 2: Introduction
+#### DAY 2 (17-9): Introduction
 
- Pre-reading
- * `r xfun::embed_file('Thieme-2018-Significance.pdf')`
-    
+Pre-reading
+
+- `r xfun::embed_file('Thieme-2018-Significance.pdf')`
+
+<br>
+   
 * Introduction to R 10:00-12:00
   + history and motivation
   + R for data analysis
@@ -85,27 +88,30 @@ Our agenda is below.
   + Console, scripts
     + `r xfun::embed_file('example.Rmd')`  
     + `r xfun::embed_file('data.csv')`
-* Basic types, indexing 13:00-14:30
+* Basic types 13:00-14:30
   + base
   + dates and times
     + `r xfun::embed_file('example.Rmd')`  
     + `r xfun::embed_file('data.csv')`
-* Read and writing data 15:00-16:30
-  + base
-  + Excel, web
+* Data transformation 15:00-16:30
+  + Missing values
+  + Indexing, sorting, filtering
     + `r xfun::embed_file('example.Rmd')`  
     + `r xfun::embed_file('data.csv')`
 
 <br>
 
-#### DAY 3: Handling data
+#### DAY 3 (18-9): Handling data
 
 Pre-reading
-* `r xfun::embed_file('v59i10.pdf')`
-* `r xfun::embed_file('peerj-preprints-3183.pdf')`
+
+- `r xfun::embed_file('v59i10.pdf')`
+- `r xfun::embed_file('peerj-preprints-3183.pdf')`
+
+<br>
 
 * Day 2 recap 9:30-10:00
-* Pre-processing/cleaning 10:00-12:00
+* Pre-processing/munging 10:00-12:00
   + base: merge, aggregate
   + tidy data: dplyr
   + regular expression
@@ -122,12 +128,15 @@ Pre-reading
 
 <br>
 
-#### DAY 4: Outputs
+#### DAY 4 (19-9): Outputs
 
 Pre-reading
-* `r xfun::embed_file('jeabehav00088-0140.pdf')`
 
-* Day 2 recap 9:30-10:00
+- `r xfun::embed_file('jeabehav00088-0140.pdf')`
+
+<br>
+
+* Day 3 recap 9:30-10:00
 * Plotting 10:00-11:30
   + ggplot2
   + colour themes
