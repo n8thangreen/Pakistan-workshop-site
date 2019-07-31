@@ -78,19 +78,19 @@ Our agenda is below.
  Pre-reading
  * `r xfun::embed_file('Thieme-2018-Significance.pdf')`
     
-* Introduction to R
+* Introduction to R 10:00-12:00
   + history and motivation
   + R for data analysis
   + RStudio GUI
   + Console, scripts
     + `r xfun::embed_file('example.Rmd')`  
     + `r xfun::embed_file('data.csv')`
-* Basic types, indexing
+* Basic types, indexing 13:00-14:30
   + base
   + dates and times
     + `r xfun::embed_file('example.Rmd')`  
     + `r xfun::embed_file('data.csv')`
-* Read and writing data
+* Read and writing data 15:00-16:30
   + base
   + Excel, web
     + `r xfun::embed_file('example.Rmd')`  
@@ -100,16 +100,23 @@ Our agenda is below.
 
 #### DAY 3: Handling data
 
-* Pre-processing/cleaning
+Pre-reading
+* `r xfun::embed_file('v59i10.pdf')`
+* `r xfun::embed_file('peerj-preprints-3183.pdf')`
+
+* Day 2 recap 9:30-10:00
+* Pre-processing/cleaning 10:00-12:00
   + base: merge, aggregate
   + tidy data: dplyr
   + regular expression
     + `r xfun::embed_file('example.Rmd')`  
     + `r xfun::embed_file('data.csv')`
-* Exploring data
+* Exploring data 13:00-15:00
   + summary statistics
-  + tables
-  + epidemiology
+  + tables and basic plots
+    + `r xfun::embed_file('example.Rmd')`  
+    + `r xfun::embed_file('data.csv')`
+* Writing data 15:30-16:30
     + `r xfun::embed_file('example.Rmd')`  
     + `r xfun::embed_file('data.csv')`
 
@@ -117,20 +124,20 @@ Our agenda is below.
 
 #### DAY 4: Outputs
 
-* Basic models/tests
-  + Regression
-  + Chi-square, etc
-    + `r xfun::embed_file('example.Rmd')`  
-    + `r xfun::embed_file('data.csv')`
-* Plotting
-  + base
+Pre-reading
+* `r xfun::embed_file('jeabehav00088-0140.pdf')`
+
+* Day 2 recap 9:30-10:00
+* Plotting 10:00-11:30
   + ggplot2
+  + colour themes
     + `r xfun::embed_file('example.Rmd')`  
     + `r xfun::embed_file('data.csv')`
-* Maps
-    + `r xfun::embed_file('example.Rmd')`  
-    + `r xfun::embed_file('data.csv')`
-* RMarkdown
-    + `r xfun::embed_file('example.Rmd')`  
-    + `r xfun::embed_file('data.csv')`
-    
+* Maps 12:00-13:00
+  + `r xfun::embed_file('example.Rmd')`  
+  + `r xfun::embed_file('data.csv')`
+* Putting it all together 14:00-16:00
+  + plots for presentations
+  + maps for presentations
+      + `r xfun::embed_file('example.Rmd')`  
+      + `r xfun::embed_file('data.csv')`
