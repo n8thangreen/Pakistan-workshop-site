@@ -1,26 +1,22 @@
 ---
 title: "Pakistan R workshop"
-description: |
-  Welcome to the website. I hope you enjoy it!
+description:
 site: distill::distill_website
 ---
 
 <br>
 
-![](https://images.unsplash.com/photo-1463936575829-25148e1db1b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1990&q=80)
-
+<center>![](https://upload.wikimedia.org/wikipedia/commons/5/5a/Derawar_fort-_A_view_of_the_fort_from_the_balcony_of_a_mosque.jpg)</center>
 <br>
 
-#### We are so excited to have you as a participant at this year's workshop. You can find all of our workshop information on this site.  
+#### You can find all of our workshop information on this site.  
 
 <br>
 
 # When & Where
 
-**Date:** August 3-4, 2019, 08:00-17:30  
-**Location:** Rm 123, Plant Studio, Plant City
-
-*Parking: Not available. Please consider walking here and enjoy the nice plants outdoors as you do.*  
+**Date:** 16th - 20th September 2019, 08:00-17:30  
+**Location:** Pakistan
 
 
 <br>
@@ -54,18 +50,20 @@ In addition, you will need an up-to-date web browser.
 
 
 # Learning Objectives
+ 
+From basic principles to advanced graphics. You will be able to 
 
-Lorem ipsum dolor sit amet, cum ea ubique iisque facilisi, pri propriae gloriatur ad, duo te feugait disputando. Ex ius congue interpretaris. Sed te probatus dissentiet, purto tollit ut quo, an qui suas oporteat. Novum atomorum incorrupte ea sit.  
-
-Ne cetero definiebas scripserit sea, sint viris elitr vim an. Quidam audire nostrum te pri, eam an invenire scriptorem. Ex altera aeterno scaevola pro, solum iusto ne mei. Et pri cibo constituam, velit postea utroque vim ad. Invidunt electram at per, sed id mutat impetus interesset.  
+* Read-in an explore data sets
+* Clean messy data and rearrange for analysis
+* Plot and map different types of data
 
 
 <br>
 
 # Organizers
 
-* Agnes Arber
-* Gregor Mendel
+* Nathan Green
+* David Jorgensen
 
 
 <br>
@@ -76,56 +74,61 @@ Our agenda is below.
 
 <br>
 
-### Day 1
+#### DAY 2: Introduction
 
-Please download the necessary materials for each session. 
-
-* 08:00 - 09:00 Registration/breakfast
-* 09:00 - 10:30 How to Keep Your Orchid Alive
+* Introduction to R
+  + history
+  + R for data analysis
+  + RStudio GUI
+  + Console, scripts
     + `r xfun::embed_file('example.Rmd')`  
-    + `r xfun::embed_file('data.csv')`  
-* 10:30 - 11:00 Break / Plant Swap
-* 11:00 - 12:30 Growing a Papaya in Chicago
+    + `r xfun::embed_file('data.csv')`
+* Basic types, indexing
+  + base
+  + dates and times
     + `r xfun::embed_file('example.Rmd')`  
-    + `r xfun::embed_file('data.csv')`  
-* 12:30 - 14:00 Lunch
-* 14:00 - 15:30 How to Grow the Most Beautiful Tomato
+    + `r xfun::embed_file('data.csv')`
+* Read and writing data
+  + base
+  + Excel, web
     + `r xfun::embed_file('example.Rmd')`  
-    + `r xfun::embed_file('data.csv')`  
-* 15:30 - 16:00 Break
-* 16:00 - 17:30 Baby Arugula: 3 Varieties, Countless Salads
-    + `r xfun::embed_file('example.Rmd')`  
-    + `r xfun::embed_file('data.csv')` 
-```{r, echo =FALSE}
-
-# devtools::install_github('yihui/xfun')
-
-# a single RmD file
-# xfun::embed_file('example.Rmd')
-```
-
+    + `r xfun::embed_file('data.csv')`
 
 <br>
 
+#### DAY 3: Handling data
 
-## Day 2 Materials
+* Pre-processing/cleaning
+  + base: merge, aggregate
+  + tidy data: dplyr
+  + regular expression
+    + `r xfun::embed_file('example.Rmd')`  
+    + `r xfun::embed_file('data.csv')`
+* Exploring data
+  + summary statistics
+  + tables
+  + epidemiology
+    + `r xfun::embed_file('example.Rmd')`  
+    + `r xfun::embed_file('data.csv')`
 
-Please download the necessary materials for each session. 
+<br>
 
-* 08:00 - 09:00 Registration/breakfast
-* 09:00 - 10:30 Trends in Houseplants
-    + `r xfun::embed_file('example.Rmd')`  
-    + `r xfun::embed_file('data.csv')` 
-* 10:30 - 11:00 Break
-* 11:00 - 12:30 Make Your Houseplant Instagram Famous
-    + `r xfun::embed_file('example.Rmd')`  
-    + `r xfun::embed_file('data.csv')` 
-* 12:30 - 14:00 Lunch
-* 14:00 - 15:30 Coping with Plant Death
-    + `r xfun::embed_file('example.Rmd')`  
-    + `r xfun::embed_file('data.csv')` 
-* 15:30 - 16:00 Break
-* 16:00 - 17:30 DIY Fertilizer
-    + `r xfun::embed_file('example.Rmd')`  
-    + `r xfun::embed_file('data.csv')` 
+#### DAY 4: Outputs
 
+* Basic models/tests
+  + Regression
+  + Chi-square, etc
+    + `r xfun::embed_file('example.Rmd')`  
+    + `r xfun::embed_file('data.csv')`
+* Plotting
+  + base
+  + ggplot2
+    + `r xfun::embed_file('example.Rmd')`  
+    + `r xfun::embed_file('data.csv')`
+* Maps
+    + `r xfun::embed_file('example.Rmd')`  
+    + `r xfun::embed_file('data.csv')`
+* RMarkdown
+    + `r xfun::embed_file('example.Rmd')`  
+    + `r xfun::embed_file('data.csv')`
+    
