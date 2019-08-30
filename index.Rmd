@@ -29,20 +29,48 @@ To participate in this workshop, you will need to make sure you:
 
 <br>
 
+### Download R and RStudio
 
+Download the latest versions 
 
-#### Install Necessary Packages
+* R https://cran.r-project.org/
+* RStudio https://www.rstudio.com/products/rstudio/#Desktop
+
+Once R and Rstudio are both installed, if you open RStudio and things have gone according to plan then in the console you will see something like the following:
+
+```
+R version 3.6.1 (2019-07-05) -- "Action of the Toes"
+Copyright (C) 2019 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+```
+
+### Install Necessary Packages
 Open RStudio and paste the following code into your console, then press Enter to run it:
 
 
 ```{r, eval = FALSE}
 # Download packages from CRAN
 
-install.packages(c("devtools", "knitr", "magrittr", "sf", "sp", "rmarkdown", "usethis", "ggplot2", "dplyr"))
+install.packages(c("devtools", "knitr", "magrittr", "sf", "sp", "rmarkdown", "usethis", "ggplot2", "dplyr", "zoo", "reshape2", "scales"))
 
 ```
 
-In addition, you will need an up-to-date web browser.  
+
+These are the main packages for the workshop.
+If we require more then we can either install them from the web or from e.g. a USB if we have them.
+ 
 
 <br>
 
@@ -77,7 +105,7 @@ Our agenda is below.
 
 Pre-reading
 
-- `r xfun::embed_file('Thieme-2018-Significance.pdf')`
+- `r xfun::embed_file('Thieme-2018-Significance.pdf', text = "R generation, Significance Magazine")`
 
 <br>
    
@@ -105,8 +133,8 @@ Pre-reading
 
 Pre-reading
 
-- `r xfun::embed_file('v59i10.pdf')`
-- `r xfun::embed_file('peerj-preprints-3183.pdf')`
+- `r xfun::embed_file('v59i10.pdf', text = "Tidy Data, Wickham")`
+- `r xfun::embed_file('peerj-preprints-3183.pdf', text = "Data organization in spreadsheets, Broman")`
 
 <br>
 
@@ -132,7 +160,8 @@ Pre-reading
 
 Pre-reading
 
-- `r xfun::embed_file('jeabehav00088-0140.pdf')`
+- `r xfun::embed_file('jeabehav00088-0140.pdf', text = "How to look at data: A review of John W. Tukey's exploratory data analysis, Church")`
+- `r xfun::embed_file('1903.09512.pdf', text = "Effective visual communication for the quantitative scientist, Vandemeulebroecke")`
 
 <br>
 
