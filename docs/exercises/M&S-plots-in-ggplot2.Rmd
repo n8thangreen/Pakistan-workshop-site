@@ -1,0 +1,259 @@
+---
+title: 'M&S plots in ggplot2'
+author: "Nathan Green, Imperial College London"
+date: "07/09/2019"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+### Slide 4
+
+```{r}
+library(dplyr)
+library(ggplot2)
+
+
+##############
+# preprocess #
+##############
+
+dat <- readxl::read_xlsx("C:/Users/ngreen1/Google Drive/Pakistan training course/data/List of AFP Cases 2015-2019.xlsx", sheet = "Data")
+
+dat$month <- lubridate::month(dat$DENTER, label = TRUE)
+
+dat$afp_cases <- dat$AFP == "ALL DIAGNOSED"
+
+x <-
+  dat %>% 
+  group_by(month, YRONSET) %>%
+  summarise(cases = sum(afp_cases, na.rm = TRUE)) %>% 
+  mutate(month_year = paste(month, YRONSET)) %>% 
+  arrange(YRONSET, month)
+
+
+#########
+# plots #
+#########
+
+ggplot(x, aes(x = month_year, y = cases)) +
+  geom_bar(stat = "identity")
+
+barplot(height = x$cases, col = "darkgreen", names.arg = x$month, las = 2)
+# axis(1, at = seq(nrow(x)), labels = x$month)
+
+# plotrix::textbox(c(-10, -10), -1, textlist = "hjkl", col = "white", fill = "green")
+mtext("2015", side = 1, line = 3, at = 8)
+mtext("2016", side = 1, line = 3, at = 22)
+mtext("2017", side = 1, line = 3, at = 36)
+mtext("2018", side = 1, line = 3, at = 50)
+mtext("2019", side = 1, line = 3, at = 64)
+
+title("Graph 1:Distribution of AFP Cases by Month, Pakistan 2015-2019*
+", ylab = "Cases (n)")
+
+abline(v = 15)
+abline(v = 30)
+abline(v = 45)
+
+x$month <- factor(x$month, ordered = TRUE)
+x$month_year <- factor(x$month_year, levels = x$month_year, ordered = TRUE)
+
+ggplot(data = x, aes(x = month_year, y = cases)) +
+  geom_bar(stat = "identity") + 
+  scale_x_discrete(breaks = x$month_year, labels = x$month,
+                   expand = c(0.1,0.1)) +
+  facet_grid(~ YRONSET, space = "free_x", scales = "free_x", switch = "x") + 
+  theme_bw() +
+  theme(strip.placement = "outside",
+        strip.background = element_rect(fill = NA, colour = "green"),
+        panel.spacing = unit(0,"cm"),
+        panel.grid.major.x = element_line(colour = NA, size = NULL, linetype = NULL,
+                                          lineend = NULL, color = NULL, arrow = NULL,
+                                          inherit.blank = FALSE),
+        panel.grid.major.y = element_line(colour = "black", size = 1, linetype = NULL,
+                                          lineend = NULL, color = NULL, arrow = NULL,
+                                          inherit.blank = FALSE),
+        plot.title = element_text(color = "green", size = 14, face = "bold.italic")) +
+  ggtitle("Graph 1:Distribution of AFP Cases by Month, Pakistan 2015-2019*") +
+  xlab("") +
+  ylab("Cases (n)") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  scale_y_continuous(breaks = round(seq(min(x$cases), max(x$cases), by = 50), 1)) + 
+  labs(caption = "* Afp.rec Data as of  15-07-2019") +
+  theme(
+    plot.caption = element_text(size = 7, face = "italic")
+  )
+```
+
+### Slide 5
+
+```{r}
+library(dplyr)
+library(zoo)
+library(reshape2)
+library(ggplot2)
+library(scales)
+
+
+##############
+# preprocess #
+##############
+
+# dat <- read_excel(file.choose())
+dat <-
+  readxl::read_xlsx(
+    path = "C:/Users/ngreen1/Google Drive/Pakistan training course/data/List of Env Samples 2015-2019.xlsx",
+    range = "A2:F58", 
+    sheet = "Sheet1") #, sheet = 1)
+
+dat$YRONSET <- zoo::na.locf(dat$YRONSET)
+
+dat <-
+  dat %>% 
+  rowwise() %>% 
+  mutate(check_total = sum(Positive, Negative, `Under Process`, na.rm = TRUE) == `Grand Total`)
+
+any(!dat$check_total)
+              
+dat <- dat %>% select(-"Grand Total", -check_total)
+dat <- dat[-nrow(dat), ]
+
+dat$month_year <- paste(dat$MONTH, dat$YRONSET)
+# dat$month <- factor(dat$month, ordered = TRUE)
+dat$month_year <- factor(dat$month_year, levels = dat$month_year, ordered = TRUE)
+
+x <- melt(dat, id.vars = c("YRONSET", "MONTH", "month_year"))
+x$variable <- factor(x$variable,
+                     levels = c("Positive", "Negative", "Under Process"))
+
+x$variable <- relevel(x$variable, 'Negative')
+
+
+#########
+# plots #
+#########
+
+#TODO: change colour scheme
+
+ggplot(x, aes(x = month_year, y = value, fill = variable)) +
+  scale_fill_manual("legend", values = c("Negative" = "lightgreen", "Positive" = "red", "Under Process" = "grey")) +
+  geom_bar(position = "fill", stat = "identity") +
+  scale_y_continuous(labels = percent_format(),
+                     breaks = seq(from = 0, to = 1, by = 0.1)) +
+  scale_x_discrete(breaks = x$month_year, labels = x$MONTH,
+                   expand = c(0.1,0.1)) +
+  facet_grid(~ YRONSET, space = "free_x", scales = "free_x", switch = "x") + 
+  theme_bw() +
+  theme(strip.placement = "outside",
+        strip.background = element_rect(fill = NA, colour = "green"),
+        panel.spacing = unit(0,"cm")) +
+  ggtitle("Environmental Sampling Results 2015-19* \nPakistan") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  xlab("") + ylab("") +
+  geom_text(data = x, aes(y = value, label = value), position = position_fill(vjust = 0.5)) +
+  theme(legend.position = "bottom", legend.title = element_blank())
+```
+
+
+### Slide 7
+
+```{r}
+library(dplyr)
+library(zoo)
+library(reshape2)
+library(ggplot2)
+library(scales)
+
+
+##############
+# preprocess #
+##############
+
+# dat <- read_excel(file.choose())
+dat <-
+  readxl::read_xlsx(
+    path = "C:/Users/ngreen1/Google Drive/Pakistan training course/data/MPQA _March SNID.xlsx")
+              
+x <- dat %>% select(-DESK, -FIELD)
+
+x$prov_district <- paste(x$"Province name", x$"District name")
+
+
+#########
+# plots #
+#########
+
+#TODO: change colour scheme
+
+ggplot(x, aes(x = prov_district, y = Overall)) +
+  geom_bar(stat = "identity", fill = "lightgreen") +
+  geom_text(aes(label = sprintf("%d%%", Overall)), vjust = 0, angle = -90, nudge_y = -5) +
+  scale_x_discrete(breaks = x$prov_district, labels = x$"District name",
+                   expand = c(0.1,0.1)) +
+  facet_grid(~ `Province name`, space = "free_x", scales = "free_x", switch = "x") + 
+  theme_bw() +
+  theme(strip.placement = "outside",
+        strip.background = element_rect(fill = NA, linetype = 0),
+        plot.title = element_text(hjust = 0.5, face = "bold"),
+        panel.spacing = unit(0,"cm")) +
+  labs(subtitle =
+         "- Micro Plans of Tier-1 Districts from Karachi town, Quetta Block and Peshawar/Khyber are passed\n- Substantial gaps identified primarily in Balochistan and pockets of KP and Sindh") +
+  ggtitle("SUMMARY OF MPQA RESULTS", ) +
+  xlab("") + ylab("") + theme(axis.text.x = element_text(angle = 90, hjust = 1))
+  # geom_text(data = x, aes(y = value, label = value), position = position_fill(vjust = 0.5))
+```
+
+
+### Slide 9
+
+```{r}
+library(dplyr)
+library(zoo)
+library(reshape2)
+library(ggplot2)
+library(scales)
+
+
+##############
+# preprocess #
+##############
+
+# dat <- read_excel(file.choose())
+dat <-
+  readxl::read_xlsx(
+    path = "C:/Users/ngreen1/Google Drive/Pakistan training course/data/MPQA _March SNID.xlsx")
+              
+x <- dat %>% select(-DESK, -FIELD)
+
+x$prov_district <- paste(x$"Province name", x$"District name")
+
+
+#########
+# plots #
+#########
+
+#TODO: change colour scheme
+
+ggplot(x, aes(x = prov_district, y = Overall)) +
+  geom_bar(stat = "identity", fill = "lightgreen") +
+  geom_text(aes(label = sprintf("%d%%", Overall)), vjust = 0, angle = -90, nudge_y = -5) +
+  scale_x_discrete(breaks = x$prov_district, labels = x$"District name",
+                   expand = c(0.1,0.1)) +
+  facet_grid(~ `Province name`, space = "free_x", scales = "free_x", switch = "x") + 
+  theme_bw() +
+  theme(strip.placement = "outside",
+        strip.background = element_rect(fill = NA, linetype = 0),
+        plot.title = element_text(hjust = 0.5, face = "bold"),
+        panel.spacing = unit(0,"cm")) +
+  labs(subtitle =
+         "- Micro Plans of Tier-1 Districts from Karachi town, Quetta Block and Peshawar/Khyber are passed\n- Substantial gaps identified primarily in Balochistan and pockets of KP and Sindh") +
+  ggtitle("SUMMARY OF MPQA RESULTS", ) +
+  xlab("") + ylab("") + theme(axis.text.x = element_text(angle = 90, hjust = 1))
+  # geom_text(data = x, aes(y = value, label = value), position = position_fill(vjust = 0.5))
+```
