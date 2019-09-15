@@ -17,7 +17,7 @@ These exercies use the `cbind()` and `rbind()` functions. Read their help docume
 Create matrices from the vectors below, by binding them column-wise.
 Is it possible in all cases? Why not?
 
-a. `a <- 1:5 ; b <- 1:5`
+a. `r a <- 1:5 ; b <- 1:5`
 b. `a <- 1:5 ; b <- c('1', '2', '3', '4', '5')`
 c. `a <- 1:5 ; b <- 1:4; c <- 1:3`
 
