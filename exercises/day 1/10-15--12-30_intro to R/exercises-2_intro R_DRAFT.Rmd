@@ -1,0 +1,207 @@
+---
+title: "Exercises-1"
+author: "Nathan Green"
+date: "07/09/2019"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### 1.
+
+Which of these are numbers?
+Which are words?
+How can you tell?
+
+```
+1
+"1"
+"one"
+```
+
+### 2.
+
+How many dimensions does a vector have?
+
+### 3.
+
+How many dimensions does a matrix have?
+
+```
+1 2 3 4 5
+2 3 4 5 6
+3 4 5 6 7
+4 5 6 7 8
+```
+
+### 4.
+
+If the below matrix is names $M$ what is value $M_{34}$?
+
+```
+1 2 3 4 5
+2 3 4 5 6
+3 4 5 6 7
+4 5 6 7 8
+```
+
+###
+
+What is 3 times 732?
+
+What is 4 to the power 7?
+
+What is 72 divided by 9?
+
+## subsetting
+
+### fix these poorly written subset commands?
+
+`vec(1:4)`
+`vec[-1:4]`
+`vec[3, 4, 5]`
+
+What is wrong with these subsetting commands?
+What will they do?
+
+`mat[2]`
+`df[1]`
+
+###
+
+Create a vector of numeric and character values by combining the two vectors that we just created (glengths and species). Assign this combined vector to a new variable called combined. Hint: you will need to use the combine c() function to do this. Print the combined vector in the console, what looks different compared to the original vectors?
+
+###
+Let’s say that in our experimental analyses, we are working with three different sets of cells: normal, cells knocked out for geneA (a very exciting gene), and cells overexpressing geneA. We have three replicates for each celltype.
+
+Create a vector named samplegroup using the code below. This vector will contain nine elements: 3 control (“CTL”) samples, 3 knock-out (“KO”) samples, and 3 over-expressing (“OE”) samples:
+
+ samplegroup <- c("CTL", "CTL", "CTL", "KO", "KO", "KO", "OE", "OE", "OE")
+Turn samplegroup into a factor data structure.
+
+###
+Create a list called list2 containing species, glengths, and number.
+
+We’ve seen that atomic vectors can be of type character, numeric (or double), integer, and logical. But what happens if we try to mix these types in a single vector?
+ Answer
+R implicitly converts them to all be the same type
+
+What will happen in each of these examples? (hint: use class() to check the data type of your objects):
+
+num_char <- c(1, 2, 3, "a")
+num_logical <- c(1, 2, 3, TRUE)
+char_logical <- c("a", "b", "c", TRUE)
+tricky <- c(1, 2, 3, "4")
+Why do you think it happens?
+
+ Answer
+Vectors can be of only one data type. R tries to convert (coerce) the content of this vector to find a “common denominator” that doesn’t lose any information.
+
+How many values in combined_logical are "TRUE" (as a character) in the following example:
+
+num_logical <- c(1, 2, 3, TRUE)
+char_logical <- c("a", "b", "c", TRUE)
+combined_logical <- c(num_logical, char_logical)
+ Answer
+Only one. There is no memory of past data types, and the coercion happens the first time the vector is evaluated. Therefore, the TRUE in num_logical gets converted into a 1 before it gets converted into "1" in combined_logical.
+
+You’ve probably noticed that objects of different types get converted into a single, shared type within a vector. In R, we call converting objects from one class into another class coercion. These conversions happen according to a hierarchy, whereby some types get preferentially coerced into other types. Can you draw a diagram that represents the hierarchy of how these data types are coerced?
+ Answer
+logical → numeric → character ← logical
+
+Can you figure out why "four" > "five" returns TRUE?
+ Answer
+When using “>” or “<” on strings, R compares their alphabetical order. Here “four” comes after “five”, and therefore is “greater than” it.
+
+Using this vector of heights in inches, create a new vector, heights_no_na, with the NAs removed.
+
+heights <- c(63, 69, 60, 65, NA, 68, 61, 70, 61, 59, 64, 69, 63, 63, NA, 72, 65, 64, 70, 63, 65)
+Use the function median() to calculate the median of the heights vector.
+
+Use R to figure out how many people in the set are taller than 67 inches.
+
+ Answer
+heights <- c(63, 69, 60, 65, NA, 68, 61, 70, 61, 59, 64, 69, 63, 63, NA, 72, 65, 64, 70, 63, 65)
+
+# 1.
+heights_no_na <- heights[!is.na(heights)] 
+# or
+heights_no_na <- na.omit(heights)
+# or
+heights_no_na <- heights[complete.cases(heights)]
+
+# 2.
+median(heights, na.rm = TRUE)
+
+# 3.
+heights_above_67 <- heights_no_na[heights_no_na > 67]
+length(heights_above_67)
+
+Create a data.frame (surveys_200) containing only the data in row 200 of the surveys dataset.
+
+Notice how nrow() gave you the number of rows in a data.frame?
+
+Use that number to pull out just that last row in the data frame.
+Compare that with what you see as the last row using tail() to make sure it’s meeting expectations.
+Pull out that last row using nrow() instead of the row number.
+Create a new data frame (surveys_last) from that last row.
+Use nrow() to extract the row that is in the middle of the data frame. Store the content of this row in an object named surveys_middle.
+
+Combine nrow() with the - notation above to reproduce the behavior of head(surveys), keeping just the first through 6th rows of the surveys dataset.
+
+ Answer
+## 1.
+surveys_200 <- surveys[200, ]
+## 2.
+# Saving `n_rows` to improve readability and reduce duplication
+n_rows <- nrow(surveys)
+surveys_last <- surveys[n_rows, ]
+## 3.
+surveys_middle <- surveys[n_rows / 2, ]
+## 4.
+surveys_head <- surveys[-(7:n_rows), ]
+
+We have seen how data frames are created when using read.csv(), but they can also be created by hand with the data.frame() function. There are a few mistakes in this hand-crafted data.frame. Can you spot and fix them? Don’t hesitate to experiment!
+
+animal_data <- data.frame(
+          animal = c(dog, cat, sea cucumber, sea urchin),
+          feel = c("furry", "squishy", "spiny"),
+          weight = c(45, 8 1.1, 0.8)
+          )
+Can you predict the class for each of the columns in the following example? Check your guesses using str(country_climate):
+Are they what you expected? Why? Why not?
+What would have been different if we had added stringsAsFactors = FALSE when creating the data frame?
+What would you need to change to ensure that each column had the accurate data type?
+country_climate <- data.frame(
+       country = c("Canada", "Panama", "South Africa", "Australia"),
+       climate = c("cold", "hot", "temperate", "hot/temperate"),
+       temperature = c(10, 30, 18, "15"),
+       northern_hemisphere = c(TRUE, TRUE, FALSE, "FALSE"),
+       has_kangaroo = c(FALSE, FALSE, FALSE, 1)
+       )
+ Answer
+missing quotations around the names of the animals
+missing one entry in the feel column (probably for one of the furry animals)
+missing one comma in the weight column
+country, climate, temperature, and northern_hemisphere are factors; has_kangaroo is numeric
+using stringsAsFactors = FALSE would have made character vectors instead of factors
+removing the quotes in temperature and northern_hemisphere and replacing 1 by TRUE in the has_kangaroo column would give what was probably intended
+
+
+
+Create a new data frame from the surveys data that meets the following criteria: contains only the species_id column and a new column called hindfoot_half containing values that are half the hindfoot_length values. In this hindfoot_half column, there are no NAs and all values are less than 30.
+
+Hint: think about how the commands should be ordered to produce this data frame!
+
+ Answer
+surveys_hindfoot_half <- surveys %>%
+    filter(!is.na(hindfoot_length)) %>%
+    mutate(hindfoot_half = hindfoot_length / 2) %>%
+    filter(hindfoot_half < 30) %>%
+    select(species_id, hindfoot_half)
+    
+    

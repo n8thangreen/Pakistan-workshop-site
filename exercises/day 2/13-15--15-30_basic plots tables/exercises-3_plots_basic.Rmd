@@ -1,0 +1,81 @@
+---
+title: 'Exercises-3: plots- basic'
+author: "Nathan Green, Imperial College London"
+date: "07/09/2019"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+1.
+Plot Miles/(US) gallon versus Rear axle ratio by `plot(mpg,drat)`.
+On which axis does `mpg` appear?
+a. `mpg` appears on the x axis
+b. `mpg` appears on the y axis
+
+2.
+Is a scatterplot recommended for continuous or dichotomous variables?
+a. continuous
+b. dichotomous
+
+3.
+Produce a histogram with `hist(gear)`.
+What do you see?
+a. frequencies
+b. probability density
+
+4.
+Change type of visualization of our scatterplot in Exercise 1 `plot(mpg,drat,type="")`.
+If we want to see lines what we have to type into "":
+a. `type="l"`
+b. `type="p"`
+
+5.
+Now we want to see both point and lines in our plot.
+What we have to type into `plot(mpg,drat,type="")`.
+a. `type=c("p","l")`
+b. `type="b"`
+
+6.
+Add another variable to our plot, for example `Weight`.
+What command do we have to use:
+
+a. `plot(mpg, drat); plot(mpg, wt)`
+b. `plot(mpg, drat); points(mpg, wt)`
+
+7.
+Now we have added a new variable to our plot.
+Suppose we want to use two different colours to separate the points.
+Type `plot(mpg, drat, col=2)`.
+What colour have we selected:
+
+a. red
+b. green
+
+8.
+Now we want to differentiate the two different variables in the scatterplot:
+
+a. Let's change the colours of the second plot
+b. Change use two different types of plot (e.g. points,lines)
+
+9.
+Now we want to highlight a variable in the final plot.
+Type: `plot(mpg, drat, lwd=2) ; points(mpg, wt, lwd=1)`.
+Which plot is highlighted:
+
+a. plot1 (`mpg`, `drat`)
+b. plot2 (`mpg`, `wt`)
+
+10.
+Finally choose four different continuous variables from mtcars set and produce:
+
+a. Plot with lines and points for different variables with different colours (hint: change y axis parameters by adding command `ylim=c(0,30)` to plot [e.g. `plot(a,b,type="p",ylim=c(0,30))`.
+
+b. Choose one variable from each and highlighted it set red colour and a broad line.
+
+[https://www.r-exercises.com/2015/10/09/vector-exercises/]

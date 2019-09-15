@@ -1,0 +1,65 @@
+---
+title: 'Exercises-1: Intro to R - Lists'
+author: "Nathan Green, Imperial College London"
+date: "07/09/2019"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+1.
+If
+```
+p <- c(2,7,8), q <- c("A", "B", "C")
+x <- list(p, q)
+```
+
+then what is the value of `x[2]`?
+
+a. `NULL`
+b. `"A" "B" "C"`
+c. `"7"`
+
+2.
+If
+```
+w <- c(2, 7, 8)
+v <- c("A", "B", "C")
+x <- list(w, v)
+```
+then which R statement will replace "A" in `x` with "K"?
+
+a. `x[[2]] <- "K"`
+b. `x[[2]][1] <- "K"`
+c. `x[[1]][2] <- "K"`
+
+3.
+If `a <- list ("x"=5, "y"=10, "z"=15)`, which R statement will give the sum of all elements in `a`?
+
+a. `sum(a)`
+b. `sum(list(a))`
+c. `sum(unlist(a))`
+
+4.
+If `Newlist <- list(a=1:10, b="Good morning", c="Hi")`, write an R statement that will add 1 to each element of the first vector in `Newlist`.
+
+5.
+If `b <- list(a=1:10, c="Hello", d="AA")`, write an R expression that will give all elements, except the second, of the first vector of `b`.
+
+6.
+Let `x <- list(a=5:10, c="Hello", d="AA")`, write an R statement to add a new item `z = "NewItem"` to the list `x`.
+
+7.
+Consider `y <- list("a", "b", "c")`, write an R statement that will assign new names "one", "two" and "three" to the elements of `y`.
+
+8.
+If `x <- list(y=1:10, t="Hello", f="TT", r=5:20)`, write an R statement that will give the length of vector `r` of `x`.
+
+
+
+[https://www.r-exercises.com/2015/11/25/logical-vectors-and-operators/]
