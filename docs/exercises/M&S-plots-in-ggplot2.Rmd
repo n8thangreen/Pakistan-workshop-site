@@ -17,13 +17,22 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 library(dplyr)
 library(ggplot2)
+```
 
+Read in data.
+
+```{r}
+library(dataPakistan)
+
+file_name <- system.file(package = "dataPakistan", "extdata", "List of AFP Cases 2015-2019.xlsx")
+dat <- readxl::read_xlsx(file_name, sheet = "Data")
+```
+
+```{r}
 
 ##############
 # preprocess #
 ##############
-
-dat <- readxl::read_xlsx("C:/Users/ngreen1/Google Drive/Pakistan training course/data/List of AFP Cases 2015-2019.xlsx", sheet = "Data")
 
 dat$month <- lubridate::month(dat$DENTER, label = TRUE)
 
@@ -100,17 +109,20 @@ library(reshape2)
 library(ggplot2)
 library(scales)
 
+library(dataPakistan)
 
-##############
-# preprocess #
-##############
+file_name <- system.file(package = "dataPakistan", "extdata", "List of Env Samples 2015-2019.xlsx")
 
 # dat <- read_excel(file.choose())
 dat <-
   readxl::read_xlsx(
-    path = "C:/Users/ngreen1/Google Drive/Pakistan training course/data/List of Env Samples 2015-2019.xlsx",
+    path = file_name,
     range = "A2:F58", 
     sheet = "Sheet1") #, sheet = 1)
+
+##############
+# preprocess #
+##############
 
 dat$YRONSET <- zoo::na.locf(dat$YRONSET)
 
@@ -170,15 +182,15 @@ library(reshape2)
 library(ggplot2)
 library(scales)
 
+library(dataPakistan)
+
+file_name <- system.file(package = "dataPakistan", "extdata", "MPQA _March SNID.xlsx")
+dat <- readxl::read_xlsx(file_name)
+
 
 ##############
 # preprocess #
 ##############
-
-# dat <- read_excel(file.choose())
-dat <-
-  readxl::read_xlsx(
-    path = "C:/Users/ngreen1/Google Drive/Pakistan training course/data/MPQA _March SNID.xlsx")
               
 x <- dat %>% select(-DESK, -FIELD)
 
@@ -219,16 +231,16 @@ library(reshape2)
 library(ggplot2)
 library(scales)
 
+library(dataPakistan)
+
+file_name <- system.file(package = "dataPakistan", "extdata", "MPQA _March SNID.xlsx")
+dat <- readxl::read_xlsx(file_name)
+
 
 ##############
 # preprocess #
 ##############
 
-# dat <- read_excel(file.choose())
-dat <-
-  readxl::read_xlsx(
-    path = "C:/Users/ngreen1/Google Drive/Pakistan training course/data/MPQA _March SNID.xlsx")
-              
 x <- dat %>% select(-DESK, -FIELD)
 
 x$prov_district <- paste(x$"Province name", x$"District name")
