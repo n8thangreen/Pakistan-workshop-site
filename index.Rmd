@@ -121,8 +121,10 @@ Pre-reading
     + `r xfun::embed_file(here::here('presentations/day 1/10-15--12-30_intro to R/intro RStudio.pdf'))`
     + `r xfun::embed_file(here::here('presentations/day 1/10-15--12-30_intro to R/R_overview_slides.pdf'))`
   + exercises:
-    + `r xfun::embed_file(here::here('exercises/day 1/10-15--12-30_intro to R/exercises-1_intro-R_vectors.pdf'))`
-    + `r xfun::embed_file(here::here('exercises/day 1/10-15--12-30_intro to R/exercises-1_intro-R_types.pdf'))`
+    + `r xfun::embed_file(here::here('exercises/day 1/10-15--12-30_intro to R/exercises-1_intro-R_vectors.pdf'), text = "starter exercises")`
+    + `r xfun::embed_file(here::here('exercises/day 1/10-15--12-30_intro to R/exercises-1_intro-R_types.pdf'), text = "types exercises questions")`
+    + `r xfun::embed_file(here::here('exercises/day 1/10-15--12-30_intro to R/exercises-1_intro-R_types_root.pdf'), text = "types exercises solutions")`
+    + `r xfun::embed_file(here::here('exercises/day 1/10-15--12-30_intro to R/exercises-1_intro-R_M_E_root.pdf'), text = "M & E data intro exercises")`
   
 * Basic types 13:30-15:00
   + base
@@ -164,9 +166,10 @@ Pre-reading
       + `r xfun::embed_file(here::here('exercises/day 2/10-15--12-15_merge join dplyr/exercises-1_intro-R_binding.pdf'))`
 * Basis plots and tables 13:15-15:30
   + slides:
-      + `r xfun::embed_file(here::here('presentations/day 2/13-15--15-30_basic plots tables/intro plots.pdf'))`
+      + `r xfun::embed_file(here::here('presentations/day 2/13-15--15-30_basic plots tables/intro M&E plots.pdf'))`
   + exercises:
-      + `r xfun::embed_file(here::here('exercises/day 2/13-15--15-30_basic plots tables/exercises-3_plots_basic.pdf'))`
+      + `r xfun::embed_file(here::here('exercises/day 2/13-15--15-30_basic plots tables/exercises-3_plots_content.pdf'), text = "base R plots questions")`
+      + `r xfun::embed_file(here::here('exercises/day 2/13-15--15-30_basic plots tables/exercises-3_plots_root.pdf'), text = "base R plots answers")`
 * reading and cleaning data 15:45-17:00
   + slides:
       + `r xfun::embed_file(here::here('presentations/day 2/15-45--17-00_reading cleaning/intro-to-data-cleaning.pdf'))`
@@ -191,8 +194,9 @@ Pre-reading
     + slides:
       + `r xfun::embed_file(here::here('presentations/day 3/10-15--12-30_ggplot/plots ggplot.pdf'))`
     + exercises:
-      + `r xfun::embed_file(here::here('exercises/day 3/10-15--12-30_ggplot/exercises-ggplot.pdf'))`
-      + `r xfun::embed_file(here::here('exercises/day 3/10-15--12-30_ggplot/M_S-plots-in-ggplot2.pdf'))`
+      + `r xfun::embed_file(here::here('exercises/day 3/10-15--12-30_ggplot/exercises-ggplot.pdf'), text = "intro ggplot questions")`
+      + `r xfun::embed_file(here::here('exercises/day 3/10-15--12-30_ggplot/exercises-ggplot_solutions.pdf'), text = "intro ggplot answers")`
+      + `r xfun::embed_file(here::here('exercises/day 3/10-15--12-30_ggplot/M&E-plots-in-ggplot2.pdf'), text = "M & E data ggplots")`
       
 * Maps 13:30-14:45
   + slides:
