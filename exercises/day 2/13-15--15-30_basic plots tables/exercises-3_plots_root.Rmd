@@ -1,0 +1,20 @@
+---
+title: 'Exercises-3: plots- basic'
+author: "Nathan Green, Imperial College London"
+date: "07/09/2019"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+
+```{r setup, include=FALSE}
+# questions
+# knitr::opts_chunk$set(results = "hide", echo = FALSE)
+
+# solutions
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r child = 'exercises-3_plots_content.Rmd'}
+```

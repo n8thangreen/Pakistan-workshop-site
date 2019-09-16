@@ -1,0 +1,123 @@
+
+Load in the `mtcars` data by typing `data("mtcars")`
+This is described as Motor Trend Car Road Tests data.
+
+Rather than refering to `mtcars` everytime we want to use data from it, we can `attach` the variable to the environment so that we can refer to the column names directly.
+Do this by typing
+
+```{r}
+attach(mtcars)
+```
+
+Now we can simply type a columns name from those available i.e. `r names(mtcars)`.
+
+1.
+Plot Miles/(US) gallon versus Rear axle ratio by `plot(mpg,drat)`.
+On which axis does `mpg` appear?
+a. `mpg` appears on the x axis
+b. `mpg` appears on the y axis
+
+2.
+Is a scatterplot recommended for continuous or dichotomous variables?
+a. continuous
+b. dichotomous
+
+3
+We want to include the origin on the plots. To do this we use the argument `xlim = c(0,<xmax>)` and `ylim = c(0,<ymax>)`.
+Replot the scatterplot with the origin.
+
+```{r}
+plot(x=mpg, y=drat, xlim = c(0,35), ylim = c(0,5))
+```
+
+4 Let's change the type of points. We do this using the `pch` argument.
+
+Redo the scatterplot with triangle points.
+HINT: read the `pch` help document.
+
+```{r}
+plot(x=mpg, y=drat, xlim = c(0,35), ylim = c(0,5), pch = 2)
+```
+
+5. Give the plots a title using the `main` argument.
+
+6. Give the plot a subtitle using `sub`.
+
+7. Label the axes using `xlab` and `ylab`.
+
+8. Make the size of the point half the size using `cex`
+
+```{r}
+plot(x=mpg, y=drat, xlim = c(0,35), ylim = c(0,5), cex = 0.5)
+```
+
+9. Change the colour of the points to dark blue.
+
+```{r}
+plot(x=mpg, y=drat, xlim = c(0,35), ylim = c(0,5), col = "dark blue")
+```
+
+10 If we set the `type` of plot as an argument to `'n'` then an empty plot is made. Create an empty scatterplot.
+Then we can add points. Using the `text` function in the same way as `plot` (and `points`) plot a number for each point. HINT: with no `labels` argument in `text` sequential numbers are used.
+
+```{r}
+plot(x=mpg, y=drat, xlim = c(0,35), ylim = c(0,5), type = 'n')
+text(x=mpg, y=drat)
+```
+
+11.
+Produce a histogram with `hist(gear)`.
+What do you see?
+a. frequencies
+b. probability density
+
+12.
+Change type of visualization of our scatterplot in Exercise 1 `plot(mpg,drat,type="")`.
+If we want to see lines what we have to type into "":
+a. `type="l"`
+b. `type="p"`
+
+13.
+Now we want to see both point and lines in our plot.
+What we have to type into `plot(mpg,drat,type="")`.
+a. `type=c("p","l")`
+b. `type="b"`
+
+14.
+Add another variable to our plot, for example `Weight`.
+What command do we have to use:
+
+a. `plot(mpg, drat); plot(mpg, wt)`
+b. `plot(mpg, drat); points(mpg, wt)`
+
+15.
+Now we have added a new variable to our plot.
+Suppose we want to use two different colours to separate the points.
+Type `plot(mpg, drat, col=2)`.
+What colour have we selected:
+
+a. red
+b. green
+
+16.
+Now we want to differentiate the two different variables in the scatterplot:
+
+a. Let's change the colours of the second plot
+b. Change use two different types of plot (e.g. points,lines)
+
+17.
+Now we want to highlight a variable in the final plot.
+Type: `plot(mpg, drat, lwd=2) ; points(mpg, wt, lwd=1)`.
+Which plot is highlighted:
+
+a. plot1 (`mpg`, `drat`)
+b. plot2 (`mpg`, `wt`)
+
+18.
+Finally choose four different continuous variables from mtcars set and produce:
+
+a. Plot with lines and points for different variables with different colours (HINT: change y axis parameters by adding command `ylim=c(0,30)` to plot [e.g. `plot(a,b,type="p",ylim=c(0,30))`].
+
+b. Choose one variable from each and highlighted it set red colour and a broad line.
+
+[https://www.r-exercises.com/2015/10/09/vector-exercises/]

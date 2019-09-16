@@ -1,5 +1,5 @@
 ---
-  title: 'Exercises-1: Intro to R - NAs'
+title: 'Exercises-1: Intro to R - NAs'
 author: "Nathan Green, Imperial College London"
 date: "07/09/2019"
 output:
@@ -16,69 +16,89 @@ First read in the data
 
 ```{r}
 library(dataPakistan)
-system.file("extdata", package = "dataPakistan") %>% dir()
+library(ggplot2)
+library(dplyr)
+
+file_location <- system.file("extdata", package = "dataPakistan")
+dat <- readxl::read_excel(path = paste0(file_location, "/Admin-datasheet-year2018.xlsx"))
 ```
 
-# C:/Users/ngreen1/Documents/R/win-library/3.6/dataPakistan/extdata/Admin-datasheet-year2018.xlsx
-
+```{r}
 ggplot(data = dat, mapping = aes(x = `Coverage at Hosehold (n)`, y = `Coverage at Hosehold (%)`)) + geom_point() + xlim(0, 1e+6)
+```
 
-
+```{r}
 my_plot <- ggplot(data = dat, mapping = aes(x = `Coverage at Hosehold (n)`, y = `Coverage at Hosehold (%)`))
+```
 
+```{r}
 my_plot + geom_point() + xlim(0, 1e+6)
+```
 
-###
-install.packages("hexbin")
+```{r}
+# install.packages("hexbin")
 library(hexbin)
 
 my_plot + geom_hex(bins = 50) + xlim(0, 1e+6)
+```
 
-###
+```{r}
 my_plot + geom_point(alpha = 0.1) + xlim(0, 1e+6)
+```
 
-###
+```{r}
 my_plot + geom_point(alpha = 0.1, colour = "blue") + xlim(0, 1e+6)
+```
 
-###
+```{r}
 my_plot + geom_point(alpha = 0.1, aes(colour = Province)) + xlim(0, 1e+6)
+```
 
-###
+```{r}
 ggplot(data = dat,
        mapping = aes(x = Province, y = `Coverage at Hosehold (n)`)) +
   geom_point(aes(colour = as.factor(Year))) + ylim(0, 1e+6)
+```
 
-###
+```{r}
 ggplot(data = dat,
        mapping = aes(x = Province, y = `Coverage at Hosehold (n)`)) +
   geom_boxplot() + ylim(0, 1e+6)
+```
 
-###
+```{r}
 ggplot(data = dat,
        mapping = aes(x = Province, y = `Coverage at Hosehold (n)`)) +
   geom_boxplot(alpha = 0) +
   geom_jitter(alpha = 0.3, colour = "tomato") +
   ylim(0, 1e+6)
+```
 
-###
+```{r}
 ggplot(data = dat,
        mapping = aes(x = Province, y = `Coverage at Hosehold (n)`)) +
   geom_jitter(alpha = 0.3, colour = "tomato") +
   geom_boxplot(alpha = 0) +
   ylim(0, 1e+6)
+```
 
+### time series
 
-# time series -------------------------------------------------------------
-
+```{r}
 ggplot(data = dat, aes(x = Year, y = `Coverage at Hosehold (n)`)) + geom_line()
+```
 
+```{r}
 ggplot(data = dat[dat$District == "ATTOCK", ], aes(x = Year, y = `Coverage at Hosehold (n)`)) + geom_line()
+```
 
+```{r}
 ggplot(data = dat, aes(x = Year, y = `Coverage at Hosehold (n)`, colour = District)) + geom_line() + ylim(0, 1e+6)
+```
 
+### faceting
 
-# faceting ----------------------------------------------------------------
-
+```{r}
 nms <- table(dat$District) %>% names %>% .[1:9]
 ss_dat <- dat[dat$District %in% nms, ]
 
@@ -90,11 +110,12 @@ ggplot(data = ss_dat, mapping = aes(x = Year, y = `Coverage at Hosehold (n)`)) +
   geom_line() +
   facet_wrap(facets = vars(District)) +
   theme_bw()
+```
 
+### arranging and exporting plots
 
-# arranging and exporting plots ------------------------------------------
-
-install.packages("gridExtra")
+```{r}
+# install.packages("gridExtra")
 library(gridExtra)
 
 p1 <-
@@ -109,5 +130,9 @@ p2 <-
   theme_bw()
 
 final_plot <- grid.arrange(p1, p2, ncol = 2)
+```
 
+
+```r
 ggsave("final_plot.png", final_plot, width = 10, dpi = 300)
+```

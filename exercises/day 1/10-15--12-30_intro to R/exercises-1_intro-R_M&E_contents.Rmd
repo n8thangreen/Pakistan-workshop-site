@@ -1,0 +1,66 @@
+Read in the data
+
+```{r}
+library(dplyr)
+library(dataPakistan)
+
+data_name <- system.file(package = "dataPakistan", "extdata") %>% dir(full.names = TRUE) %>% .[2]
+dat <- readxl::read_excel(data_name, sheet = 1) %>% as.data.frame()
+```
+
+First of all lets take a quick look at the data for a sanity check.
+
+```{r}
+dim(dat)
+head(dat)
+str(dat)
+```
+
+\noindent Its important to know what class each column has for when we do arithmetic and plotting witht them R will handle them differently.
+We can check what types each column has using the `class()` function.
+
+We can check each column in a simple loop (other ways are possible!)
+
+```{r}
+for (i in 1:ncol(dat)){
+  print(typeof(dat[1,i]))
+}
+```
+
+We see that the first 3 columns are characters and the rest numbers which seems sensible.
+
+Now lets check for missing values. We can do this in the same way as above with a loop
+
+```{r}
+for (i in 1:ncol(dat)){
+  print(anyNA(dat[,i]))
+}
+```
+
+Looks good, no missing data.
+Now we can check for some unusual values that may be typos are need further investigation.
+Lets generate summarys for each column.
+
+```{r}
+for (i in 1:ncol(dat)){
+  print(names(dat)[i])
+  print(summary(dat[,i]))
+}
+```
+
+
+The first column is months so lets check that there are only 12 of them using `table()`. This counts the frequencies.
+
+```{r}
+table(dat[ ,1])
+```
+
+Notice that the order is alphabetic and not starting from January. If we come to plot this data we may want to change this using `factors` and `levels`.
+If we reorder then we can see if there are some missing months.
+
+```{r}
+x <- factor(dat[,1], levels = c("Jan","Feb","Mar","Apr","May","Jun","July","Aug","Sept","Oct","Nov","Dec"))
+table(x)
+```
+
+This may need looking into further.
