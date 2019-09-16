@@ -122,6 +122,7 @@ Pre-reading
     + `r xfun::embed_file(here::here('presentations/day 1/10-15--12-30_intro to R/R_overview_slides.pdf'))`
   + exercises:
     + `r xfun::embed_file(here::here('exercises/day 1/10-15--12-30_intro to R/exercises-1_intro-R_vectors.pdf'))`
+    + `r xfun::embed_file(here::here('exercises/day 1/10-15--12-30_intro to R/exercises-1_intro-R_types.pdf'))`
   
 * Basic types 13:30-15:00
   + base
