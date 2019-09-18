@@ -1,5 +1,5 @@
 ---
-title: 'Exercises-1: Intro to R - NAs'
+title: 'Exercises-1: ggplot2'
 author: "Nathan Green, Imperial College London"
 date: "07/09/2019"
 output:

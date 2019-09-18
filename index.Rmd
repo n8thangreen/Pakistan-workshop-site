@@ -196,7 +196,7 @@ Pre-reading
     + exercises:
       + `r xfun::embed_file(here::here('exercises/day 3/10-15--12-30_ggplot/exercises-ggplot.pdf'), text = "intro ggplot questions")`
       + `r xfun::embed_file(here::here('exercises/day 3/10-15--12-30_ggplot/exercises-ggplot_solutions.pdf'), text = "intro ggplot answers")`
-      + `r xfun::embed_file(here::here('exercises/day 3/10-15--12-30_ggplot/M&E-plots-in-ggplot2.pdf'), text = "M & E data ggplots")`
+      + `r xfun::embed_file(here::here('exercises/day 3/10-15--12-30_ggplot/M_E-plots-in-ggplot2.pdf'), text = "M & E data ggplots")`
       
 * Maps 13:30-14:45
   + slides:
