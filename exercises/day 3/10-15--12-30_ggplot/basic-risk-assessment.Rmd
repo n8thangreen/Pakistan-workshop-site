@@ -1,0 +1,78 @@
+---
+html_document: default
+author: "Nathan Green, Imperial College London"
+date: "07/09/2019"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+title: 'Basic risk assessment'
+---
+  
+  ```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+l
+
+First read in the data.
+
+```{r}
+library(dataPakistan)
+library(ggplot2)
+library(dplyr)
+
+file_location <- system.file("extdata", package = "dataPakistan")
+Admin <- readxl::read_excel(path = paste0(file_location, "/Admin-datasheet-year2018.xlsx"))
+AFP <- readxl::read_excel(path = paste0(file_location, "/List of AFP Cases 2015-2019.xlsx"), sheet = "Data")
+pop <- readxl::read_excel(path = paste0(file_location, "/Population under 15-estimates 2018-19 as 190510.xlsx"))
+```
+
+```{r}
+dat_AFP <- AFP[, c("YRONSET", "MTHONSET", "DISTRICT")]
+```
+
+
+```{r}
+AFP_agg <- 
+  dat_AFP %>% 
+  group_by(YRONSET, MTHONSET, DISTRICT) %>% 
+  summarise(cases = n())
+```
+
+```{r}
+library(lubridate)
+
+Admin$year <- year(Admin$Year)
+Admin$month <- month(Admin$Year)
+
+dat_Admin <- Admin[ ,c("year",
+                       "month",
+                       "District", "Total children vaccinated (Household Vaccination + Other Vaccination) n")]
+
+Admin_agg <- 
+  dat_Admin %>% 
+  group_by(year, month, District) %>% 
+  summarise(vaccinated = sum(`Total children vaccinated (Household Vaccination + Other Vaccination) n`))
+```
+
+
+```{r}
+alldat <- merge(Admin_agg, AFP_agg,
+                by.x = c("year", "month", "District"),
+                by.y = c("YRONSET", "MTHONSET", "DISTRICT"))
+
+alldat <- merge(alldat, pop,
+                by.x = "District",
+                by.y = "DISTRICT")
+
+alldat$yearmonth <- paste(alldat$year, alldat$month, sep = "_")
+alldat$notcase <- round(alldat$`POPL15 (2018)` - alldat$cases,0)
+```
+
+
+```{r}
+glm(formula = cbind(alldat$cases, alldat$notcase) ~ yearmonth + District + vaccinated,
+    family = binomial(link="logit"), data = alldat)
+```
+
+
