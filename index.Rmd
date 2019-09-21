@@ -63,7 +63,8 @@ Open RStudio and paste the following code into your console, then press Enter to
 ```{r, eval = FALSE}
 # Download packages from CRAN
 
-install.packages(c("devtools", "knitr", "magrittr", "sf", "sp", "rmarkdown", "usethis", "ggplot2", "dplyr", "zoo", "reshape2", "scales", "maptools"))
+install.packages(c("devtools", "knitr", "magrittr", "sf", "sp", "rmarkdown", "usethis", "ggplot2", "dplyr", "zoo", "reshape2", "scales", "maptools",
+                   "readxl", "rgdal"))
 
 ```
 
